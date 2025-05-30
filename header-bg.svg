@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 80" preserveAspectRatio="none">
+  <!-- Vert : 0 à 450 -->
+  <polygon points="0,0 445,0 415,50 0,50" fill="#00a86b"/>
+  <!-- Blanc : 450 à 600 -->
+  <polygon points="415,50 570,50 600,0 445,0" fill="white"/>
+  <!-- Gris : 600 à 1000 -->
+  <polygon points="600,0 1000,0 1000,50 570,50" fill="#8a929f"/>
+</svg>
