@@ -1,70 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zato Industries</title>
-    <link xmlns="http://www.w3.org/1999/xhtml" rel="icon" href="/public/images/zato-industries.ico" />
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zato Industries</title>
+  <link rel="icon" href="/images/zato-industries.ico" />
+  <style>
+    :root {
+      --jade: #00a86b;
+      --white: #ffffff;
+      --gray-dark: #111111;
+      --gray-medium: #1a1a1a;
+    }
 
-*{
-    text-align: center;
-    margin: 0;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-h1{
-    color: #00a86b;
-    font-style: italic;
-}
-.header {
-  height: 100px;
-  background: url('/public/images/header-bg.svg') no-repeat center;
-  background-size: cover;
-}
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--gray-dark);
+      color: var(--white);
+    }
 
-.header img{
-  max-height: 65px;
-}
+    header {
+      background-color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
+    .logo {
+      height: 60px;
+    }
 
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 30px;
-}
-body {
-      font-family: sans-serif;
-      background-color: #111;
+    .login-btn {
+      background-color: var(--jade);
       color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background-color: #008c5a;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      padding: 60px 40px;
+    }
+
+    .card {
+      background-color: var(--gray-medium);
+      border-radius: 16px;
+      padding: 30px 20px;
       text-align: center;
-    }
-    .info{
-        padding-top: 10%;
-    }
-    .info img{
-        width: 70%;
-        max-width: 300px;
-        margin-top: 0px;
+      transition: background-color 0.3s ease;
     }
 
+    .card:hover {
+      background-color: #222;
+    }
 
-    </style>
+    .card h1 {
+      color: var(--jade);
+      font-size: 1.6em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1em;
+      color: #ddd;
+    }
+
+    /* --- POPUP --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      color: white;
+      text-align: left;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 20px;
+      color: var(--jade);
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #333;
+      color: white;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--jade);
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .close {
+      float: right;
+      cursor: pointer;
+      color: #aaa;
+      font-size: 1.5em;
+    }
+
+    .close:hover {
+      color: white;
+    }
+
+  </style>
 </head>
 <body>
-    <div class="header">
-    <div class="header-green"></div>
-    <div class="header-white">
-        <img src="/public/images/large-zato-industries-nobg.png" alt="">
-    </div>
-    <div class="header-gray"></div>
-</div>
-<div class="info">
 
-<img src="/public/images/noway.png" alt="">
-  <h1>🚧 Site en travaux 🚧</h1>
-  <p>Une nouvelle voie s’ouvre pour le fret français.</p>
-</div>
+  <header>
+    <img src="/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
+    <button class="login-btn" onclick="openModal()">Login</button>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h1>ZATO Ferroviaire</h1>
+      <p>Une nouvelle voie s’ouvre pour le fret français.</p>
+    </div>
+
+    <div class="card">
+      <h1>ZATO StockRevealer (v1)</h1>
+      <p><i>Vous n'avez pas accès à ces détails.</i></p>
+    </div>
+  </main>
+
+  <!-- LOGIN POPUP -->
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Connexion</h2>
+      <form id="loginForm" method="POST" action="/login">
+        <input type="email" name="email" placeholder="Adresse email" required />
+        <input type="password" name="password" placeholder="Mot de passe" required />
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("loginModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
