@@ -230,11 +230,11 @@ header {
   <h1>ZATO Ferroviaire</h1>
   <p>Une nouvelle voie s’ouvre pour le fret français.</p>
 </div>
-<div class="card" id="stockRevealer" onclick="shakeDenied()">
+<div class="card" id="stockRevealer" onclick="shakeDenied('stockRevealer')">
   <h1>ZATO StockRevealer (v1)</h1>
   <p><i>Vous n'avez pas accès à ces détails.</i></p>
 </div>
-<div class="card" id="nutrition" onclick="shakeDenied()">
+<div class="card" id="nutrition" onclick="shakeDenied('nutrition')">
   <h1>ZATO Nutri (v1)</h1>
   <p><i>Vous n'avez pas accès à ces détails.</i></p>
 </div>
@@ -332,8 +332,8 @@ function closeBigModal() {
   }, 500);
 }
 
-  function shakeDenied() {
-    const el = document.getElementById('stockRevealer');
+  function shakeDenied(id) {
+    const el = document.getElementById(id);
     el.classList.remove('denied');  
     void el.offsetWidth; 
     el.classList.add('denied');
