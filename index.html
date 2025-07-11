@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zato Industries</title>
-  <link rel="icon" href="/public/images/zato-industries.ico" />
+  <link rel="icon" href="/images/zato-industries.ico" />
   <style>
     :root {
       --jade: #00a86b;
@@ -17,21 +17,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--gray-dark);
-      color: var(--white);
-    }
-
-    header {
-      background-color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .logo {
@@ -53,19 +38,13 @@
       background-color: #008c5a;
     }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-      padding: 60px 40px;
-    }
-
     .card {
       background-color: var(--gray-medium);
       border-radius: 16px;
       padding: 30px 20px;
       text-align: center;
       transition: background-color 0.3s ease;
+      max-height: 150px;
     }
 
     .card:hover {
@@ -186,6 +165,52 @@
   20%, 40%, 60%, 80% { transform: translateX(10px); background-color: #ff0000; }
   100% { transform: translateX(0); background-color: var(--gray-medium); }
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--gray-dark);
+  color: var(--white);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+header {
+  background-color: var(--gray-medium);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.container {
+  flex-grow: 1;
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  /* overflow-y: auto; falls benötigt */
+}
+
+.footer {
+  background-color: var(--gray-medium);
+  color: white;
+  height: 120px;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .denied {
   animation: shake 0.5s ease-in-out;
@@ -196,7 +221,7 @@
 <body>
 
   <header>
-    <img src="/public/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
+    <img src="/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
     <button class="login-btn" onclick="openModal()">Login</button>
   </header>
 
@@ -209,7 +234,20 @@
   <h1>ZATO StockRevealer (v1)</h1>
   <p><i>Vous n'avez pas accès à ces détails.</i></p>
 </div>
-
+<div class="card" id="nutrition" onclick="shakeDenied()">
+  <h1>ZATO Nutri (v1)</h1>
+  <p><i>Vous n'avez pas accès à ces détails.</i></p>
+</div>
+</main>
+<div class="footer">
+  <svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- A stylisé -->
+    <path d="M40,100 L70,20 L100,100 L85,100 L70,60 L55,100 Z" fill="#00BFFF"/>
+    <!-- Texte -->
+    <text x="105" y="70" font-size="48" fill="white" style="text-decoration: italic;" letter-spacing="1">Aperture</text>
+    <text x="147" y="81.5" font-size="12" fill="#888" letter-spacing="4.3">CORPORATION</text>
+  </svg>
+</div>
 <div class="modal" id="bigModal">
   <div class="big-modal-content" id="bigModalContent">
     <span class="close" onclick="closeBigModal()">&times;</span>
@@ -225,6 +263,7 @@
       <form id="loginForm" method="POST" action="/login">
         <input type="email" name="email" placeholder="Adresse email" required />
         <input type="password" name="password" placeholder="Mot de passe" required />
+        <p style="font-size: 11px; margin-bottom:10px; padding:5px; color:grey;"><i>Ce service n'est pas encore disponible, car cette page est hébergée sur Github.</i></p>
         <button type="submit">Se connecter</button>
       </form>
     </div>
