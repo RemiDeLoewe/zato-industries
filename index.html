@@ -124,8 +124,8 @@
       background-color: var(--jade);
       border: none;
       color: white;
-      font-weight: 
-     border-radius: 8px;
+      font-weight: 400;
+      border-radius: 8px;
       cursor: pointer;
     }
 
@@ -188,6 +188,8 @@ header {
   padding: 20px 40px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   flex-shrink: 0;
+
+    z-index: 21;
 }
 
 .container {
@@ -196,8 +198,28 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
+  line-height: 30px;
+
+    z-index: 3;
   /* overflow-y: auto; falls benötigt */
 }
+
+.container-div-design {
+    background-color: #008c5be0;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 1600px;
+    height: 550px;
+    margin-top: 19%;
+    margin-left: 25%;
+    rotate: 35deg;
+    z-index: 1;
+    border-radius: 50px;
+    padding: 20px 20px;
+    position: fixed;
+}
+
 
 .footer {
   background-color: var(--gray-medium);
@@ -209,12 +231,14 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20;
 }
 
 .indispo {
 margin:auto;
+margin-top: -30px;
   max-width:600px;
-  max-heigth:600px;
+  max-height:600px;
 }
 .denied {
   animation: shake 0.5s ease-in-out;
@@ -225,14 +249,16 @@ margin:auto;
 <body>
 
   <header>
-    <img src="/public/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
+    <img src="public/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
     <button class="login-btn" onclick="openModal()">Login</button>
   </header>
 
   <main class="container">
-    <div style="margin:auto;">
+    <div class="container-div-design">
+    <div style="margin:auto; rotate:-35deg; position: fixed;">
     <img src="public/images/noway.png" class="indispo"></img>
-    <p style="font-size:13px; color:grey; text-decoration:italic;">Nous sommes encore en train de vous préparer nos surprises. Nous arrivons bientôt.</p>
+    <h4 style="font-size:23px; color:rgb(255, 255, 255); font-weight: 300;">Nos futurs services sont en train d'être imaginés.</h4>
+    </div></div>
 <!--
     <div class="card" id="stockRevealer" onclick="shakeDenied('stockRevealer')">
   <h1>ZATO StockRevealer (v1)</h1>
