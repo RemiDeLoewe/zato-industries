@@ -192,13 +192,18 @@ header {
     z-index: 21;
 }
 
-.container {
-  flex-grow: 1;
-  padding: 60px 40px;
+main {
+  flex: 1;
+}
+
+
+.card-container {
+  margin: 40px 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 0.33fr 0.33fr 0.33fr;
+  
   gap: 40px;
-  line-height: 30px;
+
 
     z-index: 3;
   /* overflow-y: auto; falls benötigt */
@@ -248,123 +253,50 @@ margin-top: -30px;
 </head>
 <body>
 
-  <header> <h3>VIA GITHUB</h3>
+  <header>
     <img src="public/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
     <button class="login-btn" onclick="openModal()">Login</button>
   </header>
 
-  <main class="container">
-    <div class="container-div-design">
+  <main>
+
+  <h1 style=" text-align: center; margin-top: 60px; padding-bottom: 35px;">Nos projets.</h1>
+  <div class="card-container">
+    
+<div class="card" id="Boulangerie" onclick="">
+  <h1>Boulange'route</h1>
+  <p><i>Vous n'avez pas accès à ces détails.</i></p>
+</div>
+<div class="card" id="Alimentation" onclick="">
+  <h1>Alimentation Équitable</h1>
+  <p><i>Avancée de l'UI : 80%. Avancée du backend : 20%.</i></p>
+</div>
+  <div class="card" id="Recycle" onclick="shakeDenied('stockRevealer')">
+  <h1>Recyclerie</h1>
+  <p><i>Vous n'avez pas accès à ces détails.</i></p>
+</div>
+<div class="card" id="Ferroviaire" onclick="shakeDenied('boatrav')">
+  <h1>Optimisation Ferroviaire</h1>
+  <p><i>Avancée de l'UI : 80%. Avancée du backend : 20%.</i></p>
+</div>
+<div class="card" id="Ferroviaire" onclick="shakeDenied('boatrav')">
+  <h1>Vegan Store</h1>
+  <p><i>Avancée de l'UI : 80%. Avancée du backend : 20%.</i></p>
+</div>
+<!--<div class="container-div-design">
     <div style="margin:auto; rotate:-35deg; position: fixed;">
     <img src="public/images/noway.png" class="indispo"></img>
     <h4 style="font-size:23px; color:rgb(255, 255, 255); font-weight: 300;">Nos futurs services sont en train d'être imaginés.</h4>
-    </div></div>
-<!--
-    <div class="card" id="stockRevealer" onclick="shakeDenied('stockRevealer')">
-  <h1>ZATO StockRevealer (v1)</h1>
-  <p><i>Vous n'avez pas accès à ces détails.</i></p>
-</div>
-<div class="card" id="nutrition" onclick="shakeDenied('nutrition')">
-  <h1>ZATO Nutri (v1)</h1>
-  <p><i>Vous n'avez pas accès à ces détails.</i></p>
-</div>
-<div class="card" id="boatrav" onclick="shakeDenied('boatrav')">
-  <h1>ZATO BoaTrav (v1)</h1>
-  <p><i>Avancée de l'UI : 80%. Avancée du backend : 20%.</i></p>
-</div>-->
-</main>
+    </div></div>-->
+  </div>
+  </main>
+
 <div class="footer">
   <svg width="1900" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
     <!-- Texte -->
     <text x="-200" y="70" font-size="48" fill="white" style="text-decoration: italic;" letter-spacing="200">ZATO</text>
+    <text x="-200" y="110" font-size="15" fill="grey" style="text-decoration: initial;"letter-spacing="2">opérateur de services essentiels de proximité, durable, equitable et automatisé.</text>
   </svg>
 </div>
-
-  <!-- LOGIN POPUP -->
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Connexion</h2>
-      <form id="loginForm" method="POST" action="/login">
-        <input type="email" name="email" placeholder="Adresse email" required />
-        <input type="password" name="password" placeholder="Mot de passe" required />
-        <p style="font-size: 11px; margin-bottom:10px; padding:5px; color:grey;"><i>Ce service n'est pas encore disponible, car cette page est hébergée sur Github.</i></p>
-        <button type="submit">Se connecter</button>
-      </form>
-    </div>
-  </div>
-
-
-
-  <script>
-  function openModal() {
-  const modal = document.getElementById("loginModal");
-  const content = modal.querySelector(".modal-content");
-  const btn = document.querySelector(".login-btn");
-
-  const rect = btn.getBoundingClientRect();
-
-  const startLeft = rect.left + rect.width / 2 - 200; 
-  const startTop = rect.bottom - 40; 
-
-  content.style.left = `${startLeft}px`;
-  content.style.top = `${startTop}px`;
-
-  modal.classList.add("show");
-  void content.offsetWidth;
-  content.classList.add("appear");
-}
-
-function closeModal() {
-  const modal = document.getElementById("loginModal");
-  const content = modal.querySelector(".modal-content");
-  content.classList.remove("appear");
-
-  setTimeout(() => {
-    modal.classList.remove("show");
-  }, 400);
-}
-
-    window.onclick = function(event) {
-      const loginmodal = document.getElementById("loginModal");
-      const bigmodal = document.getElementById("bigModal");
-      if (event.target === loginmodal) {
-        closeModal();
-      } else if (event.target === bigmodal) {
-        closeBigModal();
-      }
-    }
-    function openBigModal() {
-  const modal = document.getElementById("bigModal");
-  const content = document.getElementById("bigModalContent");
-
-  modal.classList.add("show");
-
-  // Forcer un reflow pour déclencher transition
-  void content.offsetWidth;
-
-  content.classList.add("appear");
-}
-
-function closeBigModal() {
-  const modal = document.getElementById("bigModal");
-  const content = document.getElementById("bigModalContent");
-
-  content.classList.remove("appear");
-
-  setTimeout(() => {
-    modal.classList.remove("show");
-  }, 500);
-}
-
-  function shakeDenied(id) {
-    const el = document.getElementById(id);
-    el.classList.remove('denied');  
-    void el.offsetWidth; 
-    el.classList.add('denied');
-  }
-
-
-  </script>
 </body>
 </html>
