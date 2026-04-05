@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zato Industries</title>
+  
+  <meta http-equiv="refresh" content="3;url=https://deloewe.com/">
+  
+  <title>Zato Industries - Redirection</title>
   <link rel="icon" href="/public/images/zato-industries.ico" />
   <style>
     :root {
@@ -13,267 +16,54 @@
       --gray-medium: #1a1a1a;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .logo {
-      height: 60px;
-    }
-
-    .login-btn {
-      background-color: var(--jade);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .login-btn:hover {
-      background-color: #008c5a;
-    }
-
-    .card {
-      background-color: var(--gray-medium);
-      border-radius: 16px;
-      padding: 30px 20px;
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--gray-dark);
+      color: var(--white);
+      font-family: 'Segoe UI', sans-serif;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      transition: background-color 0.3s ease;
-      max-height: 150px;
     }
 
-    .card:hover {
-      background-color: #222;
+    .logo { height: 80px; margin-bottom: 20px; }
+    
+    .loader {
+      border: 4px solid #333;
+      border-top: 4px solid var(--jade);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
     }
 
-    .card h1 {
-      color: var(--jade);
-      font-size: 1.6em;
-      margin-bottom: 10px;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    .card p {
-      font-size: 1em;
-      color: #ddd;
-    }
-
-    .modal {
-  display: none;
-  position: fixed;
-  z-index: 10;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  background: #1e1e1e;
-  padding: 30px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  color: white;
-  text-align: left;
-  opacity: 0;
-  transform: scale(0.3);
-  transition: transform 0.5s ease, opacity 0.5s ease, left 0.5s ease, top 0.5s ease;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 20;
-}
-
-.modal-content.appear {
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
-
-
-
-    .modal-content h2 {
-      margin-bottom: 20px;
-      color: var(--jade);
-    }
-
-    .modal-content input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: none;
-      background-color: #333;
-      color: white;
-    }
-
-    .modal-content button {
-      width: 100%;
-      padding: 10px;
-      background-color: var(--jade);
-      border: none;
-      color: white;
-      font-weight: 400;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .close {
-      float: right;
-      cursor: pointer;
-      color: #aaa;
-      font-size: 1.5em;
-    }
-
-    .close:hover {
-      color: white;
-    }
-    .big-modal-content {
-  background: #1e1e1e;
-  padding: 40px;
-  border-radius: 20px;
-  width: 90vw;
-  height: 90vh;
-  color: white;
-  position: absolute;
-  opacity: 0;
-  transform: perspective(1000px) rotateY(90deg) scale(0.95) translate(-50%, -50%);
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  z-index: 20;
-  overflow-y: auto;
-  left: 50%;
-  top: 50%;
-}
-.big-modal-content.appear {
-  transform: perspective(1000px) rotateY(0deg) scale(1) translate(-50%, -50%);
-  opacity: 1;
-}
-@keyframes shake {
-  0% { transform: translateX(0); background-color: #ff0000; }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); background-color: #660000; }
-  20%, 40%, 60%, 80% { transform: translateX(10px); background-color: #ff0000; }
-  100% { transform: translateX(0); background-color: var(--gray-medium); }
-}
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: var(--gray-dark);
-  color: var(--white);
-  font-family: 'Segoe UI', sans-serif;
-}
-
-header {
-  background-color: var(--gray-medium);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 40px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-
-    z-index: 21;
-}
-
-main {
-  flex: 1;
-}
-
-
-.card-container {
-  margin: 40px 40px;
-  display: grid;
-  grid-template-columns: 0.33fr 0.33fr 0.33fr;
-  
-  gap: 40px;
-
-
-    z-index: 3;
-  /* overflow-y: auto; falls benötigt */
-}
-
-.container-div-design {
-    background-color: #008c5be0;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    width: 1600px;
-    height: 550px;
-    margin-top: 19%;
-    margin-left: 25%;
-    rotate: 35deg;
-    z-index: 1;
-    border-radius: 50px;
-    padding: 20px 20px;
-    position: fixed;
-}
-
-
-.footer {
-  background-color: var(--gray-medium);
-  color: white;
-  height: 120px;
-  text-align: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
-}
-
-.indispo {
-margin:auto;
-margin-top: -30px;
-  max-width:600px;
-  max-height:600px;
-}
-.denied {
-  animation: shake 0.5s ease-in-out;
-}
+    h1 { font-size: 1.5rem; margin-bottom: 10px; padding: 0 20px; }
+    p { color: #888; }
+    a { color: var(--jade); text-decoration: none; font-weight: bold; }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="public/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
-    <button class="login-btn" onclick="openModal()">Login</button>
-  </header>
+  <img src="public/images/large-zato-industries-nobg.png" alt="Zato Industries Logo" class="logo">
+  
+  <h1>Zato Industries évolue.</h1>
+  <p>Nous vous redirigeons vers <strong>deloewe.com</strong>...</p>
+  
+  <div class="loader"></div>
 
-  <main>
-    <img style="max-width:500px;margin-left:calc(50% + (-250px));" src = "./public/images/noway.png"></img>
-  <h1 style=" text-align: center; margin-top: 60px; padding-bottom: 35px;">Zato Industries est encore en train de se construire.</h1>
-<!--<div class="container-div-design">
-    <div style="margin:auto; rotate:-35deg; position: fixed;">
-    <img src="public/images/noway.png" class="indispo"></img>
-    <h4 style="font-size:23px; color:rgb(255, 255, 255); font-weight: 300;">Nos futurs services sont en train d'être imaginés.</h4>
-    </div></div>-->
-  </div>
-  </main>
+  <p style="margin-top: 20px; font-size: 0.9em;">
+    Si la redirection ne fonctionne pas, <a href="https://deloewe.com/">cliquez ici</a>.
+  </p>
 
-<div class="footer">
-  <svg width="1900" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-    <!-- Texte -->
-    <text x="-200" y="70" font-size="48" fill="white" style="text-decoration: italic;" letter-spacing="200">ZATO</text>
-    <text x="-200" y="110" font-size="15" fill="grey" style="text-decoration: initial;"letter-spacing="2">opérateur de services essentiels de proximité, durable, equitable et automatisé.</text>
-  </svg>
-</div>
 </body>
 </html>
